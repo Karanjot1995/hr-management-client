@@ -8,7 +8,7 @@ function App() {
   
   async function fetchData(){
     const url = `http://34.170.76.69/`;
-    fetch(url)
+    fetch('https://8080-cs-1053727390227-default.cs-us-central1-pits.cloudshell.dev')
       .then(response => response.json())
       .then(data => {
         console.log(data)
