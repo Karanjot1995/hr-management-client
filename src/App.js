@@ -7,8 +7,8 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
-// const url = `https://hr-server-366909.uc.r.appspot.com`;
-const url = `http://localhost:8080`;
+const url = `https://hr-server-366909.uc.r.appspot.com`;
+// const url = `http://localhost:8080`;
 
 function App() {
   const [state, setState] = useState({name:''})
