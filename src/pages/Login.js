@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+// import {HOST} from 
+const url = `https://hr-server-366909.uc.r.appspot.com`;
+// const url = `http://localhost:8080`;
 
 function Login (){
     const navigate = useNavigate();
@@ -33,7 +36,7 @@ function Login (){
             }
             }
 
-            await fetch(`http://localhost:8080/api/login`, opts).then(res=>{
+            await fetch(`${url}/api/login`, opts).then(res=>{
             if(res.status==200){
                 console.log(res.status)
                 return res.json()
@@ -55,7 +58,7 @@ function Login (){
 
     }
     useEffect(() => {
-        console.log('LOGIN')
+        console.log(process.env.HOST)
         setToken(localStorage.getItem('token'))
     },[token]);
     return (

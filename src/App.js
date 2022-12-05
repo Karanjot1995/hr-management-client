@@ -16,13 +16,6 @@ function App() {
   
   async function fetchData(){
 
-    // const headers = {
-    //   "Accept": "application/json",
-    //   "Content-Type": "application/json"
-    // }
-    // const res = await axios(url)
-    // console.log(res.data)
-    // await fetch(url).then(res=>res.json()).then(data=>console.log(data))
   }
   useEffect(() => {
     setToken(localStorage.getItem('token'))
@@ -48,7 +41,7 @@ function App() {
           <Navbar />
         </div>
         <Routes>
-          <Route exact path="/login" element={<Login/>}/>
+          <Route path="*" element={<Login/>}/>
           <Route exact path="/sign-up" element={<Signup/>}/>
         </Routes>        
       </div>
