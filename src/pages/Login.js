@@ -1,6 +1,63 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login (){
+    const navigate = useNavigate();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [token, setToken] = useState("");
+
+    const handleEmailChange = event => {
+        setEmail(event.target.value);
+    };
+    const handlePasswordChange = event => {
+        setPassword(event.target.value);
+    };
+
+    const login = async(e) => {
+        e.preventDefault()
+        if(!email || !password){
+            alert('All fields are mandatory!')
+        }else{
+            let body = {
+                email:email,
+                password: password
+            }
+        
+            let opts = {
+            method: "POST",
+            body:JSON.stringify(body),
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            }
+            }
+
+            await fetch(`http://localhost:8080/api/login`, opts).then(res=>{
+            if(res.status==200){
+                console.log(res.status)
+                return res.json()
+            }else{
+                alert('Incorrect email or password!')
+            }
+            }).then(data=>{
+            localStorage.setItem('token', data.access_token);
+            localStorage.setItem('user', JSON.stringify(data.user));
+            setToken(data.access_token)
+            if(data.access_token){
+                alert('Logged in successfully!')
+                navigate('/')
+                window.location.reload();
+            }
+            })
+
+        }
+
+    }
+    useEffect(() => {
+        console.log('LOGIN')
+        setToken(localStorage.getItem('token'))
+    },[token]);
     return (
       <div>
         <form className='login-form'>
@@ -11,6 +68,8 @@ function Login (){
                 type="email"
                 className="form-control"
                 placeholder="Enter email"
+                value={email}
+                onChange={handleEmailChange}
             />
             </div>
             <div className="mb-3">
@@ -19,6 +78,8 @@ function Login (){
                 type="password"
                 className="form-control"
                 placeholder="Enter password"
+                value={password}
+                onChange={handlePasswordChange}
             />
             </div>
             <div className="mb-3">
@@ -34,7 +95,7 @@ function Login (){
             </div>
             </div>
             <div className="d-grid">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" onClick={(e)=>login(e)} className="btn btn-primary">
                 Submit
             </button>
             </div>

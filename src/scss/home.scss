@@ -34,9 +34,17 @@
     cursor: pointer;
   }
   h1,h2,h3{
-    color: #004690;
+    color: #dc3545;
   }
   
+  .logo{
+    position: absolute;
+    left:0;
+    margin-left: 10px;
+    background-color: #e1e1e1;
+    padding: 3px;
+    font-size: 22px;
+  }
   #sign-page{
     button{
       background: #004690;
@@ -408,7 +416,7 @@
   
   
   .btn{
-    background: #004690!important;
+    background: #dc3545!important;
   }
   //#4472a0
   //************************all users************************

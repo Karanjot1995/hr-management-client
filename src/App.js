@@ -11,7 +11,7 @@ const url = `https://hr-server-366909.uc.r.appspot.com`;
 // const url = `http://localhost:8080`;
 
 function App() {
-  const [state, setState] = useState({name:''})
+  const [token, setToken] = useState({name:''})
   const [data, setData] = useState({})
   
   async function fetchData(){
@@ -22,25 +22,38 @@ function App() {
     // }
     // const res = await axios(url)
     // console.log(res.data)
-    await fetch(url).then(res=>res.json()).then(data=>console.log(data))
+    // await fetch(url).then(res=>res.json()).then(data=>console.log(data))
   }
   useEffect(() => {
+    setToken(localStorage.getItem('token'))
     fetchData()
-  },[]);
-  return (
-    <div className="App">
-      <div>
-        <Navbar />
-      </div>
-      <Router>
+  },[token]);
+
+  if(token){
+    return (
+      <div className="App">
+        <div>
+          <Navbar />
+        </div>
         <Routes>
           <Route exact path="/" element={<Home/>}/>
-          <Route exact path="/sign-in" element={<Login/>}/>
-          <Route exact path="/sign-up" element={<Signup/>}/>
         </Routes>
-      </Router>
-    </div>
-  );
+      </div>
+    );
+
+  }else{
+    return (
+      <div className="App">
+        <div>
+          <Navbar />
+        </div>
+        <Routes>
+          <Route exact path="/login" element={<Login/>}/>
+          <Route exact path="/sign-up" element={<Signup/>}/>
+        </Routes>        
+      </div>
+    );
+  }
 }
 
 export default App;
