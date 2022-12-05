@@ -60,6 +60,7 @@ function Login (){
     useEffect(() => {
         console.log(process.env.HOST)
         setToken(localStorage.getItem('token'))
+
     },[token]);
     return (
       <div>

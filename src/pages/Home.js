@@ -9,6 +9,7 @@ import '../scss/home.scss';
 function Home() {
     const [markIn, setMarkIn] = useState(new Date());
     const [markOut, setMarkOut] = useState(new Date());
+    const [user, setUser] = useState({});
     // const [hours, setHours] = useState(new Date());
 
     let markinTime = markIn.toLocaleTimeString()
@@ -17,11 +18,16 @@ function Home() {
     var date = (nowDate.getMonth()+1)+'/'+nowDate.getDate()+'/'+nowDate.getFullYear(); 
     // let hrs = 
     console.log(markinTime, markoutTime)
+    useEffect(() => {
+      let usr = JSON.parse(localStorage.getItem('user'))
+      setUser(usr)
+    },[]);
 //   let attn = {
 
 //   }
   return (
     <div className="App">
+      <p className="text-center mt-3">Employee Name:{user.first_name} {user.last_name}</p>
        <div id="attendace-page" className="d-md-flex" >
         <div className="mark-in">
           <h2 className="pb-3">Mark Attendance</h2>
