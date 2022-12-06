@@ -17,8 +17,9 @@ function Navbar(){
 
     return(
         <div>
+        <h3 className="logo-sm d-md-none d-sm-block">HR MANAGEMENT</h3>
         <nav className="navbar navbar-expand navbar-light bg-light">
-            <h3 className="logo">HR MANAGEMENT</h3>
+            <h3 className="logo d-none d-md-block">HR MANAGEMENT</h3>
             <div className="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
                 
                 <ul className="navbar-nav">
