@@ -211,6 +211,7 @@
     font-size: 15px;
     .user-timesheet{
       max-height: 85vh;
+      overflow: auto;
     }
   
     // overflow-y: scroll;
