@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
+import Timesheet from './pages/Timesheet';
+// import env from '../env.json'
+
 const url = `https://hr-server-366909.uc.r.appspot.com`;
 // const url = `http://localhost:8080`;
 
@@ -19,6 +22,7 @@ function App() {
   }
   useEffect(() => {
     setToken(localStorage.getItem('token'))
+    // console.log(process.env.REACT_APP_HOST)
     fetchData()
   },[token]);
 
@@ -30,6 +34,7 @@ function App() {
         </div>
         <Routes>
           <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/timesheet" element={<Timesheet/>}/>
         </Routes>
       </div>
     );

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-const url = `https://hr-server-366909.uc.r.appspot.com`;
-// const url = `http://localhost:8080`;
 
 function Signup (){
   // const [firstName, setFirstName] = useState('')
@@ -37,7 +35,7 @@ function Signup (){
             'Content-Type': 'application/json',
           }
         }
-        await fetch(`${url}/api/sign-up`, opts)
+        await fetch(`${process.env.REACT_APP_HOST}/api/sign-up`, opts)
         .then(res=>{
           if(res.status==201){
             alert('Successfully signed up! Login to continue.')

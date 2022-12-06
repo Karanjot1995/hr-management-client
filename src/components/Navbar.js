@@ -27,6 +27,9 @@ function Navbar(){
                         <li className="nav-item active">
                             <a className="nav-link" href="/">Home</a>
                         </li>
+                        <li className="nav-item active">
+                            <a className="nav-link" href="/timesheet">Timesheet</a>
+                        </li>
                         <li className="nav-item">
                             <a className="nav-link" onClick={() => { if (window.confirm('Are you sure you want to logout?')) logout() } }>Logout</a>
                             {/* <a className="nav-link" onClick={logout}>Logout</a> */}

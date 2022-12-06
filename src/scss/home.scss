@@ -211,7 +211,6 @@
     font-size: 15px;
     .user-timesheet{
       max-height: 85vh;
-      overflow: scroll;
     }
   
     // overflow-y: scroll;
@@ -220,6 +219,7 @@
       min-width: 165px;
       max-width: 165px;
       padding: 5px;
+      text-align: center;
     }
     th.textbox-desc{
       min-width: 188px;
