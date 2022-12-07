@@ -5,6 +5,7 @@ function Navbar(){
     const navigate = useNavigate();
     const [token, setToken] = useState('')
     const [user, setUser] = useState('')
+    const [path, setPath] = useState('')
 
     const logout = () => {
         localStorage.setItem('token','')
@@ -15,6 +16,8 @@ function Navbar(){
     useEffect(() => {
         setToken(localStorage.getItem('token'))
         setUser(JSON.parse(localStorage.getItem('user')))
+        const pathname = window.location.pathname
+        setPath(pathname)
     },[]);
 
     return(
@@ -28,18 +31,18 @@ function Navbar(){
                 {token?
                     <>
                         <li className="nav-item active">
-                            <a className="nav-link" href="/">Home</a>
+                            <a className={path=="/"? `nav-link active-link`:`nav-link`} href="/">Home</a>
                         </li>
                         <li className="nav-item active">
-                            <a className="nav-link" href="/timesheet">Timesheet</a>
+                            <a className={path=="/timesheet"? `nav-link active-link`:`nav-link`} href="/timesheet">Timesheet</a>
                         </li>
                         {user.role=='admin'?
                         <>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/dashboard">Dashboard</a>
+                                <a className={path=="/dashboard"? `nav-link active-link`:`nav-link`} href="/dashboard">Dashboard</a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="/utilization">Utilization</a>
+                                <a className={path=="/utilization"? `nav-link active-link`:`nav-link`} href="/utilization">Utilization</a>
                             </li>
 
                         </>
