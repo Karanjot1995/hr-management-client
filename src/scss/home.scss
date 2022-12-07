@@ -397,11 +397,16 @@
   
   #markin,#markout{
     width:100px;
+    padding:5px;
+    height: 40px;
   }
   
   #markout-form, #markin-form{
     input:disabled{
       background: #fff;
+    }
+    input{
+      margin:0
     }
       position: relative;
   
