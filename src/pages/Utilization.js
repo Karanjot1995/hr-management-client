@@ -162,12 +162,12 @@ function Utilization (){
             labels,
             datasets: [
                 {
-                label: 'Billability',
+                label: 'Billability(%)',
                 data: users.map((u) => u.billability),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 },
                 {
-                label: 'Utilization',
+                label: 'Utilization(%)',
                 data: users.map((u) => u.utilization),
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
                 },
@@ -189,24 +189,27 @@ function Utilization (){
     },[token]);
 
     return (
-      <div>
+      <div id="utilization">
         <div className="d-flex mt-5">
             <div className="col-5 m-auto ">
 
-                <div className="d-flex align-items-center">
-                    <div>
+                <div className="util-dates">
+                    <div className="mr-3 mb-3">
+                        
                         <select value={reportType} onChange={handleReportType} className="mr-3">
                             <option value={'monthly'}>Monthly</option>
                             <option value={'custom'}>Custom Dates</option>
                         </select>
                     </div>
                     {reportType=="custom" ?
-                    <div className="d-flex">
+                    <div className="d-flex align-items-center">
+                        <span className="mr-2">From: </span>
                         <DatePicker
                         selected={startDate}
                         onChange={(date) => changeStartDate(date)}
                         showMonthDropdown
                         />
+                        <span className="mr-2">To: </span>
                         <DatePicker
                         selected={endDate}
                         onChange={(date) => setEndDate(date)}
@@ -215,6 +218,7 @@ function Utilization (){
                     </div>
                     :
                     <div>
+                        <p className="mb-2">Select Month:</p>
                         <DatePicker
                         selected={month}
                         onChange={(month) => setMonth(month)}

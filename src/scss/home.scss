@@ -620,3 +620,13 @@
   #row-keyValue{
     background-color:#ededed
   }
+
+  #utilization{
+    select,input{
+      width:150px;
+      margin-right: 20px;
+    }
+    .react-datepicker-wrapper{
+      width: 180px
+    }
+  }
