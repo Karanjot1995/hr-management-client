@@ -11,11 +11,7 @@ function Home() {
     const [hrs, setHrs] = useState([])
     const [user, setUser] = useState({});
     const [loading, setLoading] = useState(false);
-    // const [hours, setHours] = useState(new Date());
-    let markinTime = markIn.toLocaleTimeString()
-    let markoutTime = markOut.toLocaleTimeString()
-    // var nowDate = markIn; 
-    // var date = (nowDate.getMonth()+1)+'/'+nowDate.getDate()+'/'+nowDate.getFullYear(); 
+
 
     const getHours = async () => {
       await fetch(`${process.env.REACT_APP_HOST}/api/hours`,{
@@ -29,7 +25,6 @@ function Home() {
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setHrs(data.hours)
       });
     }

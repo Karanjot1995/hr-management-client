@@ -226,7 +226,7 @@ function Utilization (){
                     </div>
                     }
                 </div>
-                <div>Start: {start} , End: {end}</div>
+                {start&&end?<div>Start: {start} , End: {end}</div>:''}
                 <button className="btn btn-primary mt-3" onClick={getReport}>Get Report</button>
             </div>
 
