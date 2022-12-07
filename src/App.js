@@ -8,6 +8,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Timesheet from './pages/Timesheet';
+import Utilization from './pages/Utilization';
+import Dashboard from './pages/Dashboard';
 // import env from '../env.json'
 
 const url = `https://hr-server-366909.uc.r.appspot.com`;
@@ -35,6 +37,8 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home/>}/>
           <Route exact path="/timesheet" element={<Timesheet/>}/>
+          <Route exact path="/utilization" element={<Utilization/>}/>
+          <Route exact path="/dashboard" element={<Dashboard/>}/>
         </Routes>
       </div>
     );

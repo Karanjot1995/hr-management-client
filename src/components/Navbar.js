@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 function Navbar(){
     const navigate = useNavigate();
     const [token, setToken] = useState('')
+    const [user, setUser] = useState('')
 
     const logout = () => {
         localStorage.setItem('token','')
@@ -13,6 +14,7 @@ function Navbar(){
 
     useEffect(() => {
         setToken(localStorage.getItem('token'))
+        setUser(JSON.parse(localStorage.getItem('user')))
     },[]);
 
     return(
@@ -31,6 +33,19 @@ function Navbar(){
                         <li className="nav-item active">
                             <a className="nav-link" href="/timesheet">Timesheet</a>
                         </li>
+                        {user.role=='admin'?
+                        <>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="/dashboard">Dashboard</a>
+                            </li>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="/utilization">Utilization</a>
+                            </li>
+
+                        </>
+                            :''
+                        }
+
                         <li className="nav-item">
                             <a className="nav-link" onClick={() => { if (window.confirm('Are you sure you want to logout?')) logout() } }>Logout</a>
                             {/* <a className="nav-link" onClick={logout}>Logout</a> */}
