@@ -2,8 +2,7 @@ import React,{useState, useReducer, useEffect} from "react";
 import DatePicker from "react-datepicker";
 import setHours from 'date-fns/setHours'
 import setMinutes from 'date-fns/setMinutes'
-import "react-datepicker/dist/react-datepicker.css";
-import '../scss/home.scss';
+
 
 
 function Row() {
@@ -66,7 +65,6 @@ function Row() {
 
           <td className="first">
             {/* <a id={`edit-${row._id}`} className="edit-data d-none" onClick={() => editData(this.props.key)}>Edit</a> */}
-              <input id="save" onClick={submit} type="submit" className="save-data bg-white text-primary" value="Save"/>
             {/* <a id={`edit-${row._id}`} className="dalete-row" style={{ 'position': 'absolute', top: 0, left: '45px' }} onClick={() => deleteRow(row,this.props)}>/Delete</a> */}
 
             <DatePicker
@@ -74,7 +72,7 @@ function Row() {
                 name='date'
                 onChange={(date) => handleChange(date)} 
                 dateFormat="dd/MM/yyyy"
-                className="save-date"
+                className="save-date m-auto"
             />
             {/* <img className="calendar-icon" style={{top:'13px',right:'10px'}} src='calendar.png'/> */}
             <input value={date} className="created-date" hidden disabled />
@@ -118,7 +116,9 @@ function Row() {
           <td><input type="number" placeholder="Enter Duration" value={row.duration} name="duration" onChange={(val)=>handleChange(val)} data-id={7} className="edit-minutes" required/></td>
 
 
-          <td><input value={row.hours} name="hours" onChange={(val)=>handleChange(val)} data-id={8} className="edit-hours" disabled/></td>
+          <td>
+          <input id="save" onClick={submit} type="submit" className="bg-white text-primary" value="Save"/>
+          </td>
 
 
         </tr>
