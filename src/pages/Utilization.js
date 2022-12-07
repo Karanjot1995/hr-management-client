@@ -194,6 +194,7 @@ function Utilization (){
             <div className="col-5 m-auto ">
 
                 <div className="util-dates">
+                    <h3>Utilization Report</h3>
                     <div className="mr-3 mb-3">
                         
                         <select value={reportType} onChange={handleReportType} className="mr-3">
