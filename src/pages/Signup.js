@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function Signup (){
   // const [firstName, setFirstName] = useState('')
@@ -38,18 +39,33 @@ function Signup (){
         await fetch(`${process.env.REACT_APP_HOST}/api/sign-up`, opts)
         .then(res=>{
           if(res.status==201){
-            alert('Successfully signed up! Login to continue.')
+            Swal.fire({
+              icon: 'success',
+              title: 'Signup Successful!',
+              text: 'Login to continue.'
+            })
             navigate("/login");
           }else{
-            alert('Email already exists. Login to continue!')
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'User already exists!',
+            })
             navigate("/login");
           }
         })
         .then(data=>{
-          console.log(data.status)
           if(data.status==201){
-            alert('Successfully signed up! Login to continue.')
+            Swal.fire({
+              icon: 'success',
+              title: 'Signup Successful!',
+            })
           }else{
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'User already exists!',
+            })
             alert(data.msg)
           }
         })
@@ -57,7 +73,10 @@ function Signup (){
         alert('Please provide a valid email!')
       }
     }else{
-      alert('All fields are mandatory!')
+      Swal.fire({
+        icon: 'warning',
+        title: 'All fields are mandatory!',
+      })
     }
 
   }

@@ -1,5 +1,7 @@
 import React,{useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+
 // import { useHistory } from 'react-router-dom';
 function Navbar(){
     const navigate = useNavigate();
@@ -8,9 +10,19 @@ function Navbar(){
     const [path, setPath] = useState('')
 
     const logout = () => {
-        localStorage.setItem('token','')
-        navigate('/login')
-        window.location.reload();
+        Swal.fire({
+            icon: 'warning',
+            title: 'Are you sure you want to logout?',
+            showCancelButton: true,
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'No',
+        }).then((result)=>{
+            if(result.isConfirmed){
+                localStorage.setItem('token','')
+                navigate('/login')
+                window.location.reload();
+            }
+        })
     }
 
     useEffect(() => {
@@ -50,7 +62,7 @@ function Navbar(){
                         }
 
                         <li className="nav-item">
-                            <a className="nav-link" onClick={() => { if (window.confirm('Are you sure you want to logout?')) logout() } }>Logout</a>
+                            <a className="nav-link" onClick={logout}>Logout</a>
                             {/* <a className="nav-link" onClick={logout}>Logout</a> */}
                         </li>
                     </>

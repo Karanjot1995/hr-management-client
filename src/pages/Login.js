@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2';
+
 // import {HOST} from 
 
 function Login (){
@@ -18,7 +20,10 @@ function Login (){
     const login = async(e) => {
         e.preventDefault()
         if(!email || !password){
-            alert('All fields are mandatory!')
+            Swal.fire({
+                icon: 'warning',
+                title: 'All fields are mandatory!',
+            })
         }else{
             let body = {
                 email:email,
@@ -39,17 +44,24 @@ function Login (){
                 console.log(res.status)
                 return res.json()
             }else{
-                alert('Incorrect email or password!')
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Incorrect credentials!',
+                })
             }
             }).then(data=>{
-            localStorage.setItem('token', data.access_token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            setToken(data.access_token)
-            if(data.access_token){
-                alert('Logged in successfully!')
-                navigate('/')
-                window.location.reload();
-            }
+                localStorage.setItem('token', data.access_token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                setToken(data.access_token)
+                if(data.access_token){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Successful!',
+                    })
+                    navigate('/')
+                    window.location.reload();
+                }
             })
 
         }
